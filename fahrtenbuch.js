@@ -60,9 +60,11 @@ function download() {
 function upload(){
     var input = document.createElement('input');
     input.type="file";
-    document.getElementById('target_div').appendChild(input);
-    console.log(input);
+    input.accept = "application/json"
+    document.getElementById('upload').appendChild(input);
 }
+
+//todo: wie lese ich den Text aus einem file -> input. (maby onchange)
 
 
 
