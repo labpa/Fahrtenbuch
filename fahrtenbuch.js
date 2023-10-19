@@ -1,5 +1,6 @@
 let data = createExampleData();
 anzeige(data);
+newButton();
 
 
 //Array wird erstellt und mit Beispieldaten gefüllt
@@ -36,6 +37,26 @@ function anzeige(data){
     let string = JSON.stringify(data);
     let newData = JSON.parse(string);
 }
+
+function newButton(){
+    let buttonDownload = document.createElement("button");
+    buttonDownload.textContent  = "Download";
+    document.getElementById("download").append(buttonDownload);
+    buttonDownload.onclick = download;
+}
+
+function download() {
+    var element = document.createElement('a');
+    let text = JSON.stringify(data);
+    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+    element.setAttribute('download', "fahrtenbuch.json");
+    element.style.display = 'none';
+    document.body.appendChild(element);
+    element.click();
+    document.body.removeChild(element);
+  }
+
+
 
 
 
