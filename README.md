@@ -1,4 +1,6 @@
 # Fahrtenbuch
+## GitHub Pages
+https://labpa.github.io/Fahrtenbuch/
 
 ## Aufgabenstellung
 Erstellen sie eine Fahrtenbuch App, welche komplett im Browser läuft.
@@ -8,15 +10,9 @@ Die Daten sollen im WebStorage des Browsers gespeichert werden.
 Als Start Kilometerstand sollte der letzte Endkilometerstand vorgeschlagen werden.
 Ein Beispiel zum Dateidownload und Upload finden sie in der Datei.html Datei.
 
-
-
-
-## Ideen
-
 ## Dokumentation
 ### html
 + erstellen einer index.html
-
 
 ### Array erstellen
 ![Alt text](img/createArray.PNG)

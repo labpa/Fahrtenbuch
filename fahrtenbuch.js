@@ -1,6 +1,7 @@
 let data = createExampleData();
 anzeige(data);
-newButton();
+newButtonDownload();
+upload();
 
 
 //Array wird erstellt und mit Beispieldaten gefüllt
@@ -38,7 +39,7 @@ function anzeige(data){
     let newData = JSON.parse(string);
 }
 
-function newButton(){
+function newButtonDownload(){
     let buttonDownload = document.createElement("button");
     buttonDownload.textContent  = "Download";
     document.getElementById("download").append(buttonDownload);
@@ -55,6 +56,13 @@ function download() {
     element.click();
     document.body.removeChild(element);
   }
+
+function upload(){
+    var input = document.createElement('input');
+    input.type="file";
+    document.getElementById('target_div').appendChild(input);
+    console.log(input);
+}
 
 
 
