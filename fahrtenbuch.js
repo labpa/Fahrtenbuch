@@ -1,4 +1,5 @@
 let data = createExampleData();
+
 anzeige(data);
 newButtonDownload();
 upload();
@@ -63,14 +64,16 @@ function anzeigeRawJson(data){
 
 function anzeigeTabelle(data){
     //hier einfügen Tabelle erstellen 
-    let inhaltLaenge = data.length;
+   let inhaltLaenge = data.length;
     let text = "<ul>";
     for (let i = 0; i < inhaltLaenge; i++) {
+        console.log(i);
         for(let ueberschrift in data[i]){
-            console.log(ueberschrift);              // -->Überschriften
+            let anzeigeBoxZwei = document.getElementById("anzeigeBoxZwei");
+            anzeigeBoxZwei.innerHTML = ueberschrift;
+            console.log(ueberschrift);// -->Überschriften
             console.log(data[i][ueberschrift]);     // --> Inhalt Die werte die Ich brauche
         }
-        console.log(data[i].length);
         text += "<li>" + data[i].Fahrer + "</li>";
     }
     text += "</ul>";
