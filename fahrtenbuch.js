@@ -1,6 +1,6 @@
 let data = createExampleData();
 
-anzeige(data);
+anzeigeTabelle(data);
 newButtonDownload();
 upload();
 lokalesSpeichern();
@@ -18,7 +18,6 @@ function createExampleData(){
     data[0] ["Reisezweck"] = "Kurzurlaub"
     data[0] ["Datum"] = "13.12.2022";
 
-
     data[1] = new Object();
     data[1] ["Kennzeichen"] = "L-SD-666";
     data[1] ["Fahrer"] = "Schmidt";
@@ -34,6 +33,15 @@ function createExampleData(){
     data[2] ["Kilometerstand Ende"] = 721;
     data[2] ["Reisezweck"] = "Kurzurlaub";
     data[2] ["Datum"] = "13.12.2022";
+
+    data[3] = new Object();
+    data[3] ["Kennzeichen"] = "L-SD-666";
+    data[3] ["Fahrer"] = "Schmidt";
+    data[3] ["Kilometerstand Beginn"] = 2712;
+    data[3] ["Kilometerstand Ende"] = 3590;
+    data[3] ["Reisezweck"] = "Langurlaub";
+    data[3] ["Datum"] = "13.12.2022";
+
     return data;
 }
 
@@ -48,44 +56,31 @@ function lokalesSpeichern(){
 //Lokales Laden -> Ausgabe 
 function lokalesLaden(){
     var com = JSON.parse (localStorage.getItem ("fahrtenbuch"));
-    anzeige(com);
+    anzeigeTabelle(com);
 }
 
-//Aktualisiert die Tabelle 
-function anzeige(data){
-    anzeigeRawJson(data);
-    anzeigeTabelle(data);
-}
-
-function anzeigeRawJson(data){
-    let anzeigeBox = document.getElementById("anzeigeBox");
-    anzeigeBox.innerHTML = JSON.stringify(data);
-}
-
-function anzeigeTabelle(data){
-    //hier einfügen Tabelle erstellen 
-   let inhaltLaenge = data.length;
-    let text = "<ul>";
-    for (let i = 0; i < inhaltLaenge; i++) {
-        console.log(i);
-        for(let ueberschrift in data[i]){
-            let anzeigeBoxZwei = document.getElementById("anzeigeBoxZwei");
-            anzeigeBoxZwei.innerHTML = ueberschrift;
-            console.log(ueberschrift);// -->Überschriften
-            console.log(data[i][ueberschrift]);     // --> Inhalt Die werte die Ich brauche
-        }
-        text += "<li>" + data[i].Fahrer + "</li>";
-    }
-    text += "</ul>";
+//die Tabelle wird ersellt und angezeigt.
+function anzeigeTabelle(data){  
+    let inhaltLaenge = data.length;
+     let text = "<table>";
+     text += anzeigeUeberschrift();
+     for (let i = 0; i < inhaltLaenge; i++) {
+         text += "<tr>" +"<td>"+ data[i].Kennzeichen + "</td>"
+         text += "<td>" + data[i].Fahrer + "</td>"
+         text += "<td>" + data[i]["Kilometerstand Beginn"] + "</td>"
+         text += "<td>" + data[i]["Kilometerstand Ende"] + "</td>"
+         text += "<td>" + data[i].Reisezweck + "</td>"
+         text += "<td>" + data[i].Datum + "</td>"
+         text += "</tr>";
+     }
+     text += "</table>";
     document.getElementById("ausgabe").innerHTML = text;
 }
 
-
-//1. liste erstennen (passiert bereits)
-//2. Iteriere schleifendurchlauf für Überschriften
-//3. Schleifendurchlauf durch alle Array Elemente
-    //4. in der Schleife in der Schleife alle Data stelle [i] und an stelle [Überschriften] zusammenfügen in einer Zeile
-//5.generiertes Element hinzufügen (anzeigen lassen) 
+//Ueberschriften werden erzeugt
+function anzeigeUeberschrift(){
+    return " <tr> <td>Kennzeichen</td> <td>Fahrer</td> <td>Kilometerstand Beginn</td> <td>Kilometerstand Ende</td> <td>Reisezweck</td> <td>Datum</td></tr>" ;
+}
 
 //Erstellt den Download Button
 function newButtonDownload(){
@@ -115,3 +110,56 @@ function upload(){
     document.getElementById('upload').appendChild(input);
 }
 //todo: wie lese ich den Text aus einem file -> input. (maby onchange)
+//html
+//1. input field in html 
+//2. button hinzufügen
+
+//js
+//3. funktionalität button click wenn button klick
+    //1. holen alle werte aus input
+    //2. neues Objekt erzeugen aus werten von input -> gleiche namen/bezeichnungen wie bestehden
+    //3. hinzufügen zum bestehenden Array
+    //4. AnzeigeTabelle erneut aufrufen (erneuern)
+
+
+
+
+function neuesElement(){
+    const input1 = document.getElementById("insertKennzeichen");
+    const input2 = document.getElementById("insertFahrer");
+    const input3 = document.getElementById("insertKmBeginn");
+    const input4 = document.getElementById("insertKmEnde");
+    const input5 = document.getElementById("insertReisezweck");
+    const input6 = document.getElementById("insertDatum");
+}
+
+
+
+
+//     // JavaScript code
+// function storeInput() {
+//     // Initialize an empty array
+//     const inputArray = [];
+    
+//     // Get the input elements
+//     const input1 = document.getElementById("insertKennzeichen");
+//     const input2 = document.getElementById("insertFahrer");
+//     const input3 = document.getElementById("insertKmBeginn");
+//     const input4 = document.getElementById("insertKmEnde");
+//     const input5 = document.getElementById("insertReisezweck");
+//     const input6 = document.getElementById("insertDatum");
+  
+//     // Get the values of the input elements
+//     const value1 = input1.value;
+//     const value2 = input2.value;
+//     const value3 = input3.value;
+//     const value4 = input4.value;
+//     const value5 = input5.value;
+//     const value6 = input6.value;
+    
+//     // Add the values to the array
+//     inputArray.push(value1, value2, value3, value4, value5, value6);
+    
+//     // Print the array to the console
+//     console.log(inputArray);
+//   }

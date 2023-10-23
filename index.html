@@ -10,16 +10,34 @@
 <body>
 
   <h1>Fahrtenbuch</h1>  
-  <div id="anzeigeBox"></div> <!-- Inhalt des Arrays wird ausgegeben -->
+  <div id="anzeigeBox"></div> <!--Inhalt des Arrays wird ausgegeben-->
   <br>
   <div id="ausgabe"></div>
   <br>
+  <form>
+    <label for="insertKennzeichen">Kennzeichen: </label>
+    <input type="text" id="insertKennzeichen" kennzeichen = "insertKennzeichen">
+    <label for="insertFahrer">Fahrer: </label>
+    <input type="text" id="insertFahrer" fahrer = "insertFahrer">
+    <label for="insertKmBeginn">Kilometerstand Beginn: </label>
+    <input type="number" id="insertKmBeginn" kmBeginn = "insertKmBeginn">
+    <label for="insertKmEnde">Kilometerstand Ende: </label>
+    <input type="number" id="insertKmEnde" kmEnde = "insertKmEnde">
+    <label for="insertReisezweck">Reisezweck: </label>
+    <input type="text" id="insertReisezweck" reisezweck = "insertReisezweck">
+    <label for="insertDatum">Datum: </label>
+    <input type="date" id="insertDatum" datum = "insertDatum">
+    <button type="button" onclick = "neuesElement()"> Hinzufügen</button>
+  </form>
+
+
+
+  <br><br>
   <div id="download" ></div>  <!-- Download Button -->
+  <br>
   <div id="upload"></div> <!-- Upload -->
 
 
-  <br><br><br>
-  <div id="anzeigeBoxZwei"></div>
 
 
 
