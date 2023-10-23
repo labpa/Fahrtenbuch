@@ -7,15 +7,10 @@ if(lokalesLaden() == null){
     data = lokalesLaden();
 }
 
-
-
-
 anzeigeTabelle(data);
 newButtonDownload();
 upload();
 lokalesSpeichern();
-
-
 
 //Array wird erstellt und mit Beispieldaten gefüllt
 function createExampleData(){
