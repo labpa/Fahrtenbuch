@@ -1,9 +1,20 @@
-let data = createExampleData();
+
+let data;
+
+if(lokalesLaden() == null){
+    data = createExampleData();
+} else {
+    data = lokalesLaden();
+}
+
+
+
 
 anzeigeTabelle(data);
 newButtonDownload();
 upload();
 lokalesSpeichern();
+
 
 
 //Array wird erstellt und mit Beispieldaten gefüllt
@@ -55,8 +66,8 @@ function lokalesSpeichern(){
 
 //Lokales Laden -> Ausgabe 
 function lokalesLaden(){
-    var com = JSON.parse (localStorage.getItem ("fahrtenbuch"));
-    anzeigeTabelle(com);
+    var dataFromLocalstorage = JSON.parse (localStorage.getItem ("fahrtenbuch"));
+   return dataFromLocalstorage;
 }
 
 //die Tabelle wird ersellt und angezeigt.
@@ -120,46 +131,16 @@ function upload(){
     //2. neues Objekt erzeugen aus werten von input -> gleiche namen/bezeichnungen wie bestehden
     //3. hinzufügen zum bestehenden Array
     //4. AnzeigeTabelle erneut aufrufen (erneuern)
-
-
-
-
-function neuesElement(){
-    const input1 = document.getElementById("insertKennzeichen");
-    const input2 = document.getElementById("insertFahrer");
-    const input3 = document.getElementById("insertKmBeginn");
-    const input4 = document.getElementById("insertKmEnde");
-    const input5 = document.getElementById("insertReisezweck");
-    const input6 = document.getElementById("insertDatum");
+    
+function neuesElement(data){
+   let neuerEintarg = new Object();
+    neuerEintarg["Kennzeichen"] = document.getElementById("insertKennzeichen").value;
+    neuerEintarg["Fahrer"] = document.getElementById("insertFahrer").value;
+    neuerEintarg["Kilometerstand Beginn"] = document.getElementById("insertKmBeginn").value;
+    neuerEintarg["Kilometerstand Ende"] = document.getElementById("insertKmEnde").value;
+    neuerEintarg["Reisezweck"] = document.getElementById("insertReisezweck").value;
+    neuerEintarg["Datum"] = document.getElementById("insertDatum").value; //todo: Datum umwandeln in richtiges format
+    data.push(neuerEintarg);
+    lokalesSpeichern()
+    anzeigeTabelle(data)
 }
-
-
-
-
-//     // JavaScript code
-// function storeInput() {
-//     // Initialize an empty array
-//     const inputArray = [];
-    
-//     // Get the input elements
-//     const input1 = document.getElementById("insertKennzeichen");
-//     const input2 = document.getElementById("insertFahrer");
-//     const input3 = document.getElementById("insertKmBeginn");
-//     const input4 = document.getElementById("insertKmEnde");
-//     const input5 = document.getElementById("insertReisezweck");
-//     const input6 = document.getElementById("insertDatum");
-  
-//     // Get the values of the input elements
-//     const value1 = input1.value;
-//     const value2 = input2.value;
-//     const value3 = input3.value;
-//     const value4 = input4.value;
-//     const value5 = input5.value;
-//     const value6 = input6.value;
-    
-//     // Add the values to the array
-//     inputArray.push(value1, value2, value3, value4, value5, value6);
-    
-//     // Print the array to the console
-//     console.log(inputArray);
-//   }
