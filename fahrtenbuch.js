@@ -70,25 +70,62 @@ function anzeigeTabelle(data){
     let inhaltLaenge = data.length;
      let text = "<table>";
      text += anzeigeUeberschrift();
+
+
+
      for (let i = 0; i < inhaltLaenge; i++) {
         let id = i+1;
-         text += "<tr>" +"<td>"+ id + "</td>"
+         text += "<tr>" +"<td>"+ id+ "</td>"
          text += "<td>" + data[i].Kennzeichen + "</td>"
          text += "<td>" + data[i].Fahrer + "</td>"
          text += "<td>" + data[i]["Kilometerstand Beginn"] + "</td>"
          text += "<td>" + data[i]["Kilometerstand Ende"] + "</td>"
          text += "<td>" + data[i].Reisezweck + "</td>"
          text += "<td>" + data[i].Datum + "</td>"
+         text += "<td>" + erstelleCheckbox() + "</td>"
          text += "</tr>";
      }
      text += "</table>";
     document.getElementById("ausgabe").innerHTML = text;
 }
 
+function erstelleCheckbox(){
+    var x = document.createElement("INPUT");
+    x.setAttribute("type", "checkbox");
+    x.setAttribute("name", "city");
+    x.setAttribute("value", "London");
+    x.setAttribute("id", 1);
+   return x;
+}
+
 //Ueberschriften werden erzeugt
 function anzeigeUeberschrift(){
     return " <tr> <td>Nummer</td> <td>Kennzeichen</td> <td>Fahrer</td> <td>Kilometerstand Beginn</td> <td>Kilometerstand Ende</td> <td>Reisezweck</td> <td>Datum</td></tr>" ;
 }
+
+//Erzeucht ein neues Element. Das Element wird per .push() dem Array angehängt
+function neuesElement(data){
+    let neuerEintarg = new Object();
+     neuerEintarg["Kennzeichen"] = document.getElementById("insertKennzeichen").value;
+     neuerEintarg["Fahrer"] = document.getElementById("insertFahrer").value;
+     neuerEintarg["Kilometerstand Beginn"] = document.getElementById("insertKmBeginn").value;
+     neuerEintarg["Kilometerstand Ende"] = document.getElementById("insertKmEnde").value;
+     neuerEintarg["Reisezweck"] = document.getElementById("insertReisezweck").value;
+     neuerEintarg["Datum"] = document.getElementById("insertDatum").value; //todo: Datum umwandeln in richtiges format
+     data.push(neuerEintarg);
+     lokalesSpeichern()
+     anzeigeTabelle(data)
+ }
+
+ //todo: die liste braucht noch eine checkbox
+ //auswahl checkbox = element zu löschen
+ //funktion elementLoeschen() nimmt die ausgewählte Nummer und entfernt entsprechenden EIntrag aus Liste
+ function elementLoeschen(){
+    console.log("Hallo Welt!");
+ }
+
+
+
 
 //Erstellt den Download Button
 function newButtonDownload(){
@@ -116,28 +153,4 @@ function upload(){
     input.type="file";
     input.accept = "application/json"
     document.getElementById('upload').appendChild(input);
-}
-//todo: wie lese ich den Text aus einem file -> input. (maby onchange)
-//html
-//1. input field in html 
-//2. button hinzufügen
-
-//js
-//3. funktionalität button click wenn button klick
-    //1. holen alle werte aus input
-    //2. neues Objekt erzeugen aus werten von input -> gleiche namen/bezeichnungen wie bestehden
-    //3. hinzufügen zum bestehenden Array
-    //4. AnzeigeTabelle erneut aufrufen (erneuern)
-    
-function neuesElement(data){
-   let neuerEintarg = new Object();
-    neuerEintarg["Kennzeichen"] = document.getElementById("insertKennzeichen").value;
-    neuerEintarg["Fahrer"] = document.getElementById("insertFahrer").value;
-    neuerEintarg["Kilometerstand Beginn"] = document.getElementById("insertKmBeginn").value;
-    neuerEintarg["Kilometerstand Ende"] = document.getElementById("insertKmEnde").value;
-    neuerEintarg["Reisezweck"] = document.getElementById("insertReisezweck").value;
-    neuerEintarg["Datum"] = document.getElementById("insertDatum").value; //todo: Datum umwandeln in richtiges format
-    data.push(neuerEintarg);
-    lokalesSpeichern()
-    anzeigeTabelle(data)
 }
