@@ -16,37 +16,37 @@ lokalesSpeichern();
 function createExampleData(){
     let data = new Array();
 
-    data[0] = new Object();
-    data[0] ["Kennzeichen"] = "B-SP-1312";
-    data[0] ["Fahrer"] = "Müller";
-    data[0] ["Kilometerstand Beginn"] = 412;
-    data[0] ["Kilometerstand Ende"] = 590;
-    data[0] ["Reisezweck"] = "Kurzurlaub"
-    data[0] ["Datum"] = "13.12.2022";
+    // data[0] = new Object();
+    // data[0] ["Kennzeichen"] = "B-SP-1312";
+    // data[0] ["Fahrer"] = "Müller";
+    // data[0] ["Kilometerstand Beginn"] = 412;
+    // data[0] ["Kilometerstand Ende"] = 590;
+    // data[0] ["Reisezweck"] = "Kurzurlaub"
+    // data[0] ["Datum"] = "13.12.2022";
 
-    data[1] = new Object();
-    data[1] ["Kennzeichen"] = "L-SD-666";
-    data[1] ["Fahrer"] = "Schmidt";
-    data[1] ["Kilometerstand Beginn"] = 2712;
-    data[1] ["Kilometerstand Ende"] = 3590;
-    data[1] ["Reisezweck"] = "Langurlaub";
-    data[1] ["Datum"] = "13.12.2022";
+    // data[1] = new Object();
+    // data[1] ["Kennzeichen"] = "L-SD-666";
+    // data[1] ["Fahrer"] = "Schmidt";
+    // data[1] ["Kilometerstand Beginn"] = 2712;
+    // data[1] ["Kilometerstand Ende"] = 3590;
+    // data[1] ["Reisezweck"] = "Langurlaub";
+    // data[1] ["Datum"] = "13.12.2022";
 
-    data[2] = new Object();
-    data[2] ["Kennzeichen"] = "B-SP-1312";
-    data[2] ["Fahrer"] = "Eisenhauer";
-    data[2] ["Kilometerstand Beginn"] = 590;
-    data[2] ["Kilometerstand Ende"] = 721;
-    data[2] ["Reisezweck"] = "Kurzurlaub";
-    data[2] ["Datum"] = "13.12.2022";
+    // data[2] = new Object();
+    // data[2] ["Kennzeichen"] = "B-SP-1312";
+    // data[2] ["Fahrer"] = "Eisenhauer";
+    // data[2] ["Kilometerstand Beginn"] = 590;
+    // data[2] ["Kilometerstand Ende"] = 721;
+    // data[2] ["Reisezweck"] = "Kurzurlaub";
+    // data[2] ["Datum"] = "13.12.2022";
 
-    data[3] = new Object();
-    data[3] ["Kennzeichen"] = "L-SD-666";
-    data[3] ["Fahrer"] = "Schmidt";
-    data[3] ["Kilometerstand Beginn"] = 2712;
-    data[3] ["Kilometerstand Ende"] = 3590;
-    data[3] ["Reisezweck"] = "Langurlaub";
-    data[3] ["Datum"] = "13.12.2022";
+    // data[3] = new Object();
+    // data[3] ["Kennzeichen"] = "L-SD-666";
+    // data[3] ["Fahrer"] = "Schmidt";
+    // data[3] ["Kilometerstand Beginn"] = 2712;
+    // data[3] ["Kilometerstand Ende"] = 3590;
+    // data[3] ["Reisezweck"] = "Langurlaub";
+    // data[3] ["Datum"] = "13.12.2022";
 
     return data;
 }
@@ -71,7 +71,9 @@ function anzeigeTabelle(data){
      let text = "<table>";
      text += anzeigeUeberschrift();
      for (let i = 0; i < inhaltLaenge; i++) {
-         text += "<tr>" +"<td>"+ data[i].Kennzeichen + "</td>"
+        let id = i+1;
+         text += "<tr>" +"<td>"+ id + "</td>"
+         text += "<td>" + data[i].Kennzeichen + "</td>"
          text += "<td>" + data[i].Fahrer + "</td>"
          text += "<td>" + data[i]["Kilometerstand Beginn"] + "</td>"
          text += "<td>" + data[i]["Kilometerstand Ende"] + "</td>"
@@ -85,7 +87,7 @@ function anzeigeTabelle(data){
 
 //Ueberschriften werden erzeugt
 function anzeigeUeberschrift(){
-    return " <tr> <td>Kennzeichen</td> <td>Fahrer</td> <td>Kilometerstand Beginn</td> <td>Kilometerstand Ende</td> <td>Reisezweck</td> <td>Datum</td></tr>" ;
+    return " <tr> <td>Nummer</td> <td>Kennzeichen</td> <td>Fahrer</td> <td>Kilometerstand Beginn</td> <td>Kilometerstand Ende</td> <td>Reisezweck</td> <td>Datum</td></tr>" ;
 }
 
 //Erstellt den Download Button
