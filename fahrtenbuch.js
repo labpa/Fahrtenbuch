@@ -14,7 +14,7 @@ lokalesSpeichern();
 
 //Array wird erstellt und mit Beispieldaten gefüllt
 function createExampleData(){
-    let data = new Array();
+    let data = [];
 
     // data[0] = new Object();
     // data[0] ["Kennzeichen"] = "B-SP-1312";
@@ -51,7 +51,6 @@ function createExampleData(){
     return data;
 }
 
-
 //Lokales Speichern 
 function lokalesSpeichern(){
     var json = JSON.stringify(data);
@@ -71,31 +70,44 @@ function anzeigeTabelle(data){
      let text = "<table>";
      text += anzeigeUeberschrift();
 
-
-
      for (let i = 0; i < inhaltLaenge; i++) {
         let id = i+1;
-         text += "<tr>" +"<td>"+ id+ "</td>"
+         text += "<tr>" +"<td>"+ id + "</td>"
          text += "<td>" + data[i].Kennzeichen + "</td>"
          text += "<td>" + data[i].Fahrer + "</td>"
          text += "<td>" + data[i]["Kilometerstand Beginn"] + "</td>"
          text += "<td>" + data[i]["Kilometerstand Ende"] + "</td>"
          text += "<td>" + data[i].Reisezweck + "</td>"
          text += "<td>" + data[i].Datum + "</td>"
-         text += "<td>" + erstelleCheckbox() + "</td>"
+         text += "<td>" + "<button id = 'btnLoeschen' onclick = 'zeileLoeschen("+ (id -1 )+")' >Löschen</button>"+ "</td>"
          text += "</tr>";
      }
      text += "</table>";
     document.getElementById("ausgabe").innerHTML = text;
 }
 
-function erstelleCheckbox(){
-    var x = document.createElement("INPUT");
-    x.setAttribute("type", "checkbox");
-    x.setAttribute("name", "city");
-    x.setAttribute("value", "London");
-    x.setAttribute("id", 1);
-   return x;
+function zeileLoeschen(id){
+    loeschenMitSchleife(id)
+    anzeigeTabelle(data);
+    lokalesSpeichern()
+}
+
+function loeschenMitFilter(id){
+    let newData = data.filter((inhalt, index, array)=>{
+        if(index !== id) return true
+        return false   
+    })
+    data = newData;
+}
+
+function loeschenMitSchleife(id){
+    let newData = [];
+    for(let index in data){
+        if(id.toString() !== index){
+            newData.push(data[index])
+        }
+    }
+    data = newData;
 }
 
 //Ueberschriften werden erzeugt
