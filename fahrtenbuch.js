@@ -12,42 +12,9 @@ newButtonDownload();
 upload();
 lokalesSpeichern();
 
-//Array wird erstellt und mit Beispieldaten gefüllt
+//Array wird erstellt
 function createExampleData(){
     let data = [];
-
-    // data[0] = new Object();
-    // data[0] ["Kennzeichen"] = "B-SP-1312";
-    // data[0] ["Fahrer"] = "Müller";
-    // data[0] ["Kilometerstand Beginn"] = 412;
-    // data[0] ["Kilometerstand Ende"] = 590;
-    // data[0] ["Reisezweck"] = "Kurzurlaub"
-    // data[0] ["Datum"] = "13.12.2022";
-
-    // data[1] = new Object();
-    // data[1] ["Kennzeichen"] = "L-SD-666";
-    // data[1] ["Fahrer"] = "Schmidt";
-    // data[1] ["Kilometerstand Beginn"] = 2712;
-    // data[1] ["Kilometerstand Ende"] = 3590;
-    // data[1] ["Reisezweck"] = "Langurlaub";
-    // data[1] ["Datum"] = "13.12.2022";
-
-    // data[2] = new Object();
-    // data[2] ["Kennzeichen"] = "B-SP-1312";
-    // data[2] ["Fahrer"] = "Eisenhauer";
-    // data[2] ["Kilometerstand Beginn"] = 590;
-    // data[2] ["Kilometerstand Ende"] = 721;
-    // data[2] ["Reisezweck"] = "Kurzurlaub";
-    // data[2] ["Datum"] = "13.12.2022";
-
-    // data[3] = new Object();
-    // data[3] ["Kennzeichen"] = "L-SD-666";
-    // data[3] ["Fahrer"] = "Schmidt";
-    // data[3] ["Kilometerstand Beginn"] = 2712;
-    // data[3] ["Kilometerstand Ende"] = 3590;
-    // data[3] ["Reisezweck"] = "Langurlaub";
-    // data[3] ["Datum"] = "13.12.2022";
-
     return data;
 }
 
@@ -55,7 +22,6 @@ function createExampleData(){
 function lokalesSpeichern(){
     var json = JSON.stringify(data);
     localStorage.setItem("fahrtenbuch", json);
-
 }
 
 //Lokales Laden -> Ausgabe 
@@ -112,7 +78,7 @@ function loeschenMitSchleife(id){
 
 //Ueberschriften werden erzeugt
 function anzeigeUeberschrift(){
-    return " <tr> <td>Nummer</td> <td>Kennzeichen</td> <td>Fahrer</td> <td>Kilometerstand Beginn</td> <td>Kilometerstand Ende</td> <td>Reisezweck</td> <td>Datum</td></tr>" ;
+    return " <tr class ='testcss'> <td>Nummer</td> <td>Kennzeichen</td> <td>Fahrer</td> <td>Kilometerstand Beginn</td> <td>Kilometerstand Ende</td> <td>Reisezweck</td> <td>Datum</td><td>Löschen</td></tr>" ;
 }
 
 //Erzeucht ein neues Element. Das Element wird per .push() dem Array angehängt
